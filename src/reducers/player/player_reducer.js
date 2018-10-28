@@ -17,17 +17,13 @@ const playerReducer = (state = initialPlayer, action) => {
             Object.freeze(state);
             switch(action.direction) {
                 case UP:
-                    const newState = { position: [position[0], position[1] - SPRITE_SIZE]}
-                    return {...state, ...newState}
+                    return { ...state, position: [position[0], position[1] - SPRITE_SIZE]}
                 case DOWN:
-                    const newStateTwo = { position: [position[0], position[1] + SPRITE_SIZE]}
-                    return {...state, ...newStateTwo}
+                    return { ...state, position: [position[0], position[1] + SPRITE_SIZE]}
                 case RIGHT:
-                    const newStateThree = { position: [position[0] + SPRITE_SIZE, position[1]]}
-                    return {...state, ...newStateThree}
+                    return { ...state, position: [position[0] + SPRITE_SIZE, position[1]]}
                 case LEFT:
-                    const newStateFour = { position: [position[0] - SPRITE_SIZE, position[1]]}
-                    return {...state, ...newStateFour}
+                    return { ...state, position: [position[0] - SPRITE_SIZE, position[1]]}
                 default:
                     return state;
             }
