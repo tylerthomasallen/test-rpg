@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Player from './player';
+import World from './world';
 
 class App extends Component {
   render() {
     return (
   
       <div>
-        <Player />
+        <World />
       </div>
 
     );

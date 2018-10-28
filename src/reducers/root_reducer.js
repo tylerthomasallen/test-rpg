@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import player from './player/player_reducer';
 
 const rootReducer = combineReducers({
