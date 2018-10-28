@@ -48,7 +48,6 @@ class Player extends React.Component {
 
     render() {
         const { position } = this.props;
-        debugger;
 
         return (
             <div 
