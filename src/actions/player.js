@@ -27,7 +27,7 @@ const getNewPosition = (direction, position) => {
 
 
 const observeBoundaries = (newPos, oldPos) => {
-    return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH) &&
-        (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT) ?
+    return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
+        (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE) ?
         newPos : oldPos
 }

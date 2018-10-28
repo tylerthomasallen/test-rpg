@@ -1,0 +1,11 @@
+.tile {
+    display: inline-flex;
+}
+
+.grass {
+    background-color: green;
+}
+
+.castle {
+    background-image: url('./dog.png')
+}
