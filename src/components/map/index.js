@@ -1,11 +1,25 @@
 import React from 'react';
 import { SPRITE_SIZE } from '../../config/constants';
 import './styles.css';
+import { connect } from 'react-redux';
+import { addTiles } from '../../actions/map';
+import tiles from '../../data/maps/1';
 
 class Map extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const { addTiles } = this.props;
+        addTiles(tiles);
+    }
+
+
     
     render() {
-        const { tiles } = this.props;
+        const { tiles } = this.props.map;
         return (
             <div 
                 style={{
@@ -50,5 +64,19 @@ const getTileSprite = (type) => {
     }
 }
 
+const mapStateToProps = ({ map }) => {
+    return {
+        map
+    }
+}
 
-export default Map;
+const mapDispatchToProps = dispatch => {
+    return {
+        addTiles: (tiles) => dispatch(addTiles(tiles))
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Map);

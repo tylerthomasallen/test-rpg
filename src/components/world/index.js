@@ -14,7 +14,7 @@ class World extends React.Component {
                     margin: '20px auto'
                 }}
             >
-                <Map tiles={tiles}/>
+                <Map />
                 <Player />
             </div>
         )

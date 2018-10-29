@@ -1,14 +1,25 @@
 import { MAP_WIDTH, MAP_HEIGHT, SPRITE_SIZE } from '../config/constants';
 import { UP, DOWN, RIGHT, LEFT } from '../components/player';
+import store from '../store/store';
 
 export const MOVE_PLAYER = 'MOVE_PLAYER';
 
 export const movePlayer = (direction, position) => {
-    return {
-        type: MOVE_PLAYER,
-        position: observeBoundaries(getNewPosition(direction, position), position)
+    
+        return {
+            type: MOVE_PLAYER,
+            position: attemptMove(direction, position)
+        };
     };
-};
+
+const attemptMove = (direction, position) => {
+    const newPos = getNewPosition(direction, position); 
+    if (observeBoundaries(newPos, position) && observeTiles(newPos)) {
+        return newPos;
+    } else {
+        return position;
+    }
+}
 
 const getNewPosition = (direction, position) => {
     switch(direction) {
@@ -28,6 +39,17 @@ const getNewPosition = (direction, position) => {
 
 const observeBoundaries = (newPos, oldPos) => {
     return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
-        (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE) ?
-        newPos : oldPos
+        (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
 }
+
+const observeTiles = (newPos) => {
+    const tiles = store.getState().map.tiles;
+    const y = newPos[1] / SPRITE_SIZE;
+    const x = newPos[0] / SPRITE_SIZE;
+    debugger;
+    const nextTile = tiles[y][x]
+    return nextTile <= 0
+
+}
+
+
