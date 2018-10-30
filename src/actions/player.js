@@ -3,6 +3,7 @@ import { UP, DOWN, RIGHT, LEFT } from '../components/player';
 import store from '../store/store';
 
 export const MOVE_PLAYER = 'MOVE_PLAYER';
+export const CAST_SPELL = 'CAST_SPELL';
 
 export const movePlayer = (player) => {
     const { direction, position, walkIndex } = player;
@@ -12,7 +13,7 @@ export const movePlayer = (player) => {
             type: MOVE_PLAYER,
             position: attemptMove(direction, position),
             direction,
-            spriteLocation: getSpriteLocation(direction, newWalkIndex),
+            spriteLocation: getSpriteLocation({direction, walkIndex: newWalkIndex, spriteYIndex: 10}),
             walkIndex: newWalkIndex
         };
     };
@@ -25,6 +26,15 @@ const attemptMove = (direction, position) => {
         return position;
     }
 }
+
+
+export const castSpell = (direction) => {
+    debugger
+    return {
+        type: CAST_SPELL,
+        spriteLocation: getSpriteLocation({direction, spriteYIndex: 6, walkIndex: 0})
+    }
+};
 
 const getNewPosition = (direction, position) => {
     switch(direction) {
@@ -41,16 +51,18 @@ const getNewPosition = (direction, position) => {
     }
 }
 
-const getSpriteLocation = (direction, walkIndex) => {
+const getSpriteLocation = (player) => {
+    const { direction, walkIndex, spriteYIndex } = player;
+
     switch(direction) {
-        case DOWN:
-            return `${SPRITE_SIZE * walkIndex * - 1}px ${SPRITE_SIZE * 11}px`
         case RIGHT:
-            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 10}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * spriteYIndex}px`
+        case DOWN:
+            return `${SPRITE_SIZE * walkIndex * - 1}px ${SPRITE_SIZE * (spriteYIndex + 1)}px`
         case LEFT:
-            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 12}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * (spriteYIndex + 2)}px`
         case UP:
-            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 13}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * (spriteYIndex + 3)}px`
         default:
             return `0 0`
     }
@@ -74,5 +86,4 @@ const observeTiles = (newPos) => {
     return nextTile <= 0
 
 }
-
 

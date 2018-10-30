@@ -12,4 +12,10 @@ const RIGHT_KEYS = [68, 39];
 const LEFT_KEYS = [65, 37];
 const MOVEMENT_KEYS = [...DOWN_KEYS, ...UP_KEYS, ...RIGHT_KEYS, ...LEFT_KEYS];
 
-export const GAME_KEYS = [...MOVEMENT_KEYS]
+export const SPELLCAST = [32];
+
+const ACTION_KEYS = [...SPELLCAST]
+
+
+
+export const GAME_KEYS = [...MOVEMENT_KEYS, ...ACTION_KEYS];

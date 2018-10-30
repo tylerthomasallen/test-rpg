@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import playerMoveImage from './assets/harry.png';
-import { movePlayer } from '../../actions/player';
+import { movePlayer, castSpell } from '../../actions/player';
 import './assets/player.css';
-import { GAME_KEYS } from '../../config/constants';
+import { GAME_KEYS, SPELLCAST } from '../../config/constants';
 
 export const DOWN = 'DOWN';
 export const UP = 'UP';
@@ -16,6 +16,7 @@ class Player extends React.Component {
         super(props)
         this.handleMovement = this.handleMovement.bind(this);
         this.listenForMovement = this.listenForMovement.bind(this);
+        this.handleSpellCast = this.handleSpellCast.bind(this);
 
         this.listenForMovement();
     }
@@ -43,10 +44,22 @@ class Player extends React.Component {
         }
     }
 
+    handleSpellCast(e) {
+        const { direction, castSpell, position } = this.props;
+
+        if (SPELLCAST.includes(e.keyCode)) {
+            
+            e.preventDefault();
+            castSpell(direction)
+            // movePlayer({direction, position, walkIndex: 0})
+        }
+    }
+
 
     listenForMovement() {
         window.addEventListener('keydown', (e) => {
             this.handleMovement(e)
+            this.handleSpellCast(e)
         })
     }
 
@@ -75,7 +88,8 @@ const mapStateToProps = ( { player } )  => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        movePlayer: (player) => dispatch(movePlayer(player))
+        movePlayer: (player) => dispatch(movePlayer(player)),
+        castSpell: (direction) => dispatch(castSpell(direction))
     };
 };
 
