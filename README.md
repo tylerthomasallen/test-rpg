@@ -1,20 +1,54 @@
-# The Binding of Potter
+# Binding of Potter
 
 ## Background and Overview
 
-The 
+Binding of Potter is a two-player dueling game built react and redux. 
+
+## Functionality & MVP
+
+In Binding of Potter, users will be able to:
+
+* Move their characters around the board
+* Cast spells at their opponent
+* Destroy their opponent and objects on the map
+* Have optional audio
+
+## Wireframes 
+
+Users will have a map with objects (rocks, trees, tombstones). They will be able to move around the map and cast spells at their opponents.
+
+<img src="https://i.imgur.com/CxPzinP.png" width="40px">
 
 
+## Architecture and Technologies
+
+This project will be implemented with the following technologies:
+
+* React/Redux to manange state and game logic
+* Vanilla JS for DOM manipulation
+
+## Implementation Timeline
+
+#### Day 1:
+* Create map and player
+
+#### Day 2:
+* Player can move around the map only on specified tiles
+
+#### Day 3:
+* Player can cast spells
+
+#### Day 4: 
+* Introduce Player Two
+
+#### Day 5:
+* Add spells (moves) for the players
+
+#### Over the weekend
+* Finish styling 
 
 
-
-
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md).
+# React App README
 
 ## Table of Contents
 
