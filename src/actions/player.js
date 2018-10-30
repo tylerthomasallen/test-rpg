@@ -39,7 +39,18 @@ const getNewPosition = (direction, position) => {
 }
 
 const getSpriteLocation = (direction) => {
-    return '0 0';
+    switch(direction) {
+        case DOWN:
+            return '0 0'
+        case RIGHT:
+            return '0 40px'
+        case LEFT:
+            return '0px 80px'
+        case UP:
+            return '0 120px'
+        default:
+            return '0 0'
+    }
 }
 
 
