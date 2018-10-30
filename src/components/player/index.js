@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import playerMoveImage from './player_move.png';
 import { movePlayer } from '../../actions/player';
+import playerCSS from './player.css';
 
 export const DOWN = 'DOWN';
 export const UP = 'UP';
@@ -50,15 +51,12 @@ class Player extends React.Component {
         const { position } = this.props;
 
         return (
-            <div 
+            <div className="player"
                 style={{
-                    position: "absolute",
                     top: position[1],
                     left: position[0],
                     backgroundImage: `url(${playerMoveImage})`,
                     backgroundPosition: '0 0',
-                    width: '40px',
-                    height: '40px'
                 }}
             />
         );

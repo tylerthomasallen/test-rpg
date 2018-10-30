@@ -46,7 +46,6 @@ const observeTiles = (newPos) => {
     const tiles = store.getState().map.tiles;
     const y = newPos[1] / SPRITE_SIZE;
     const x = newPos[0] / SPRITE_SIZE;
-    debugger;
     const nextTile = tiles[y][x]
     return nextTile <= 0
 
