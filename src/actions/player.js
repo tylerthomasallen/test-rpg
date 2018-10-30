@@ -8,7 +8,9 @@ export const movePlayer = (direction, position) => {
     
         return {
             type: MOVE_PLAYER,
-            position: attemptMove(direction, position)
+            position: attemptMove(direction, position),
+            direction,
+            spriteLocation: getSpriteLocation(direction)
         };
     };
 
@@ -34,6 +36,10 @@ const getNewPosition = (direction, position) => {
         default:
             return position
     }
+}
+
+const getSpriteLocation = (direction) => {
+    return '0 0';
 }
 
 

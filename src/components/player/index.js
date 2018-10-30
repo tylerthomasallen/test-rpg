@@ -48,7 +48,7 @@ class Player extends React.Component {
     }
 
     render() {
-        const { position } = this.props;
+        const { position, spriteLocation } = this.props;
 
         return (
             <div className="player"
@@ -56,7 +56,7 @@ class Player extends React.Component {
                     top: position[1],
                     left: position[0],
                     backgroundImage: `url(${playerMoveImage})`,
-                    backgroundPosition: '0 0',
+                    backgroundPosition: spriteLocation,
                 }}
             />
         );
