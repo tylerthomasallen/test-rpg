@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import playerMoveImage from './player_move.png';
+import playerMoveImage from './assets/harry.png';
 import { movePlayer } from '../../actions/player';
-import './player.css';
+import './assets/player.css';
+import { GAME_KEYS } from '../../config/constants';
 
 export const DOWN = 'DOWN';
 export const UP = 'UP';
@@ -21,7 +22,9 @@ class Player extends React.Component {
 
     handleMovement(e) {
         const { position, movePlayer, walkIndex } = this.props;
-        e.preventDefault();
+        if (GAME_KEYS.includes(e.keyCode)) {
+            e.preventDefault();
+        }
         switch(e.keyCode) {
             case 83:
             case 40:
@@ -57,6 +60,7 @@ class Player extends React.Component {
                     left: position[0],
                     backgroundImage: `url(${playerMoveImage})`,
                     backgroundPosition: spriteLocation,
+                    backgroundSize: 'fill'
                 }}
             />
         );

@@ -44,20 +44,20 @@ const getNewPosition = (direction, position) => {
 const getSpriteLocation = (direction, walkIndex) => {
     switch(direction) {
         case DOWN:
-            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`
+            return `${SPRITE_SIZE * walkIndex * - 1}px ${SPRITE_SIZE * 11}px`
         case RIGHT:
-            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 10}px`
         case LEFT:
-            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 12}px`
         case UP:
-            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`
+            return `${SPRITE_SIZE * walkIndex * -1}px ${SPRITE_SIZE * 13}px`
         default:
             return `0 0`
     }
 }
 
 const getWalkIndex = (walkIndex) => {
-    return walkIndex >= 7 ? 0 : walkIndex + 1
+    return walkIndex >= 8 ? 0 : walkIndex + 1
 }
 
 

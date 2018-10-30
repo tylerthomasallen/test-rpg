@@ -1,8 +1,9 @@
 import { MOVE_PLAYER } from '../../actions/player';
+import { SPRITE_SIZE } from '../../config/constants';
 
 const initialPlayer = {
     position: [0, 0],
-    spriteLocation: '0px 0px',
+    spriteLocation: `${0}px ${SPRITE_SIZE * 10}px`,
     direction: 'DOWN',
     walkIndex: 0
 }

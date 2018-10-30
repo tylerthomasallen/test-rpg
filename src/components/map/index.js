@@ -1,5 +1,5 @@
 import React from 'react';
-import { SPRITE_SIZE } from '../../config/constants';
+import { SPRITE_SIZE, HEIGHT_MULT, WIDTH_MULT } from '../../config/constants';
 import './styles.css';
 import { connect } from 'react-redux';
 import { addTiles } from '../../actions/map';
@@ -19,8 +19,8 @@ class Map extends React.Component {
         return (
             <div className='map'
                 style={{
-                    width: '800px',
-                    height: '400px',
+                    width: `${SPRITE_SIZE * WIDTH_MULT}px`,
+                    height: `${SPRITE_SIZE * HEIGHT_MULT}px`
                 }}
             >
 
