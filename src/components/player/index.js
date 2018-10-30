@@ -20,21 +20,21 @@ class Player extends React.Component {
     }
 
     handleMovement(e) {
-        const { position, movePlayer } = this.props;
+        const { position, movePlayer, walkIndex } = this.props;
         e.preventDefault();
         switch(e.keyCode) {
             case 83:
             case 40:
-                return movePlayer(DOWN, position);
+                return movePlayer({direction: DOWN, position, walkIndex});
             case 87:
             case 38:
-                return movePlayer(UP, position)
+                return movePlayer({direction: UP, position, walkIndex})
             case 68:
             case 39:
-                return movePlayer(RIGHT, position)
+                return movePlayer({direction: RIGHT, position, walkIndex})
             case 65:
             case 37:
-                return movePlayer(LEFT, position)
+                return movePlayer({direction: LEFT, position, walkIndex})
             default:
                 console.log(e.keyCode)
         }
@@ -71,7 +71,7 @@ const mapStateToProps = ( { player } )  => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        movePlayer: (direction, position) => dispatch(movePlayer(direction, position))
+        movePlayer: (player) => dispatch(movePlayer(player))
     };
 };
 

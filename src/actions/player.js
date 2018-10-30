@@ -4,13 +4,16 @@ import store from '../store/store';
 
 export const MOVE_PLAYER = 'MOVE_PLAYER';
 
-export const movePlayer = (direction, position) => {
+export const movePlayer = (player) => {
+    const { direction, position, walkIndex } = player;
+    const newWalkIndex = getWalkIndex(walkIndex);
     
         return {
             type: MOVE_PLAYER,
             position: attemptMove(direction, position),
             direction,
-            spriteLocation: getSpriteLocation(direction)
+            spriteLocation: getSpriteLocation(direction, newWalkIndex),
+            walkIndex: newWalkIndex
         };
     };
 
@@ -38,19 +41,23 @@ const getNewPosition = (direction, position) => {
     }
 }
 
-const getSpriteLocation = (direction) => {
+const getSpriteLocation = (direction, walkIndex) => {
     switch(direction) {
         case DOWN:
-            return '0 0'
+            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 0}px`
         case RIGHT:
-            return '0 40px'
+            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 1}px`
         case LEFT:
-            return '0px 80px'
+            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 2}px`
         case UP:
-            return '0 120px'
+            return `${SPRITE_SIZE * walkIndex}px ${SPRITE_SIZE * 3}px`
         default:
-            return '0 0'
+            return `0 0`
     }
+}
+
+const getWalkIndex = (walkIndex) => {
+    return walkIndex >= 7 ? 0 : walkIndex + 1
 }
 
 
