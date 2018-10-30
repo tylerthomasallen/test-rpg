@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import playerMoveImage from './player_move.png';
 import { movePlayer } from '../../actions/player';
-import playerCSS from './player.css';
+import './player.css';
 
 export const DOWN = 'DOWN';
 export const UP = 'UP';

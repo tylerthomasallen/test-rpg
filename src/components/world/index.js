@@ -1,7 +1,6 @@
 import React from 'react';
 import Map from '../map';
 import Player from '../player';
-import tiles from '../../data/maps/1';
 
 class World extends React.Component {
     render() {

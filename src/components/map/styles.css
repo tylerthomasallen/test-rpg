@@ -3,9 +3,32 @@
 }
 
 .grass {
-    background-color: green;
+    /* background-color: green; */
 }
 
-.castle {
-    background-image: url('./dog.png')
+.bush {
+    background-image: url('./assets/tiles/bush.png');
+    background-size: cover;
+}
+
+.tombstone1 {
+    background-image: url('./assets/tiles/tombstone1.png');
+    background-size: cover;
+}
+
+.tombstone2 {
+    background-image: url('./assets/tiles/tombstone2.png');
+    background-size: cover;
+}
+
+.tree {
+    background-image: url('./assets/tiles/tree.png');
+    background-size: cover;
+}
+
+.map {
+    border-radius: 3px;
+    border: 4px solid black;
+    background-image: url('./assets/BG.png');
+    background-size: cover;
 }

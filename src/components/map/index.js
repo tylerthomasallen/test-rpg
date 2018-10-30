@@ -7,10 +7,6 @@ import tiles from '../../data/maps/1';
 
 class Map extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const { addTiles } = this.props;
         addTiles(tiles);
@@ -21,11 +17,10 @@ class Map extends React.Component {
     render() {
         const { tiles } = this.props.map;
         return (
-            <div 
+            <div className='map'
                 style={{
                     width: '800px',
                     height: '400px',
-                    border: '4px solid white'
                 }}
             >
 
@@ -52,7 +47,7 @@ const MapTile = (props) => {
                 width: SPRITE_SIZE
             }}
 
-        >{props.tile}</div>
+        ></div>
 }
 
 const getTileSprite = (type) => {
@@ -60,7 +55,15 @@ const getTileSprite = (type) => {
         case 0:
             return 'grass'
         case 1:
-            return 'castle'
+            return 'bush'
+        case 2:
+            return 'tombstone1'
+        case 3:
+            return 'tombstone2'
+        case 4:
+            return 'tree'
+        default:
+            return 'grass'
     }
 }
 
