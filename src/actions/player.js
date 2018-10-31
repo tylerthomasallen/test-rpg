@@ -28,11 +28,11 @@ const attemptMove = (direction, position) => {
 }
 
 
-export const castSpell = (direction) => {
-    debugger
+export const castSpell = (player) => {
+    const { direction, walkIndex } = player;
     return {
         type: CAST_SPELL,
-        spriteLocation: getSpriteLocation({direction, spriteYIndex: 6, walkIndex: 0})
+        spriteLocation: getSpriteLocation({direction, spriteYIndex: 6, walkIndex})
     }
 };
 
@@ -86,4 +86,3 @@ const observeTiles = (newPos) => {
     return nextTile <= 0
 
 }
-

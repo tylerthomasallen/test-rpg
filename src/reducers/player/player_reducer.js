@@ -17,7 +17,6 @@ const playerReducer = (state = initialPlayer, action) => {
         case MOVE_PLAYER:
             return {...state, position, direction, spriteLocation, walkIndex}
         case CAST_SPELL:
-        debugger;
             return {...state, spriteLocation}
         default:
             return state

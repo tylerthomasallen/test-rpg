@@ -1,7 +1,23 @@
 .player {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     transition: all 0.3s linear;
-    transition-property: top, left
+    transition-property: top, left;
+    border: 0.5px solid #E7DC06;
+    border-radius: 30px;
+}
+
+.spell {
+    border-radius: 4px;
+    background: yellow;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    transition: all 0.3s linear;
+    display: none;
+}
+
+.active-spell {
+    display: inline;
 }

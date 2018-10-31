@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import playerMoveImage from './assets/harry.png';
 import { movePlayer, castSpell } from '../../actions/player';
 import './assets/player.css';
-import { GAME_KEYS, SPELLCAST } from '../../config/constants';
+import { GAME_KEYS, SPELLCAST, SPRITE_SIZE } from '../../config/constants';
 
 export const DOWN = 'DOWN';
 export const UP = 'UP';
@@ -45,13 +45,11 @@ class Player extends React.Component {
     }
 
     handleSpellCast(e) {
-        const { direction, castSpell, position } = this.props;
+        const { direction, castSpell } = this.props;
 
         if (SPELLCAST.includes(e.keyCode)) {
-            
             e.preventDefault();
             castSpell(direction)
-            // movePlayer({direction, position, walkIndex: 0})
         }
     }
 
@@ -64,18 +62,19 @@ class Player extends React.Component {
     }
 
     render() {
-        const { position, spriteLocation } = this.props;
+        const { position, spriteLocation, direction } = this.props;
 
         return (
-            <div className="player"
-                style={{
-                    top: position[1],
-                    left: position[0],
-                    backgroundImage: `url(${playerMoveImage})`,
-                    backgroundPosition: spriteLocation,
-                    backgroundSize: 'fill'
-                }}
-            />
+                <div className="player"
+                    style={{
+                        top: position[1],
+                        left: position[0],
+                        backgroundImage: `url(${playerMoveImage})`,
+                        backgroundPosition: spriteLocation,
+                        backgroundSize: 'fill'
+                    }}
+                />
+
         );
     }
 }
@@ -89,7 +88,11 @@ const mapStateToProps = ( { player } )  => {
 const mapDispatchToProps = dispatch => {
     return {
         movePlayer: (player) => dispatch(movePlayer(player)),
-        castSpell: (direction) => dispatch(castSpell(direction))
+        castSpell: (direction) => {
+            for (let i = 0; i <= 5; i++) {
+                dispatch(castSpell({direction, walkIndex: i}))
+            }
+        }
     };
 };
 
